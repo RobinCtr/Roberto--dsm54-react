@@ -8,11 +8,16 @@ import React, {Component} from 'react';
 
  class CoinScreen extends Component{
 
- 
+    handlePress = () =>{
+        console.log("vamos a detalle", this.props);
+
+        this.props.navigation.navigate('DetailsCoponent');
+    }
      render(){
          return(
              <View style={styles.container}>
                  <Text style={styles.btnText}>Mi primer pantalla de Coins Screen </Text>
+                 <Pressable style={styles.btn} onPress={this.handlePress}><Text style={styles.btnText}>Ir a detelle</Text></Pressable>
              </View>
 
          );
