@@ -42,7 +42,7 @@ const Tab = createBottomTabNavigator();
 const App: () => React$Node = () => {
   return (
     <>
-      <NavigationContainer>
+      {/* <NavigationContainer>
         <Tab.Navigator>
           <Tab.Screen name="Home" component={Home}
             options={{
@@ -66,8 +66,10 @@ const App: () => React$Node = () => {
             }}
           />
         </Tab.Navigator>
-      </NavigationContainer>
-    
+      </NavigationContainer> */}
+    <NavigationContainer>
+       <CoinsStack/>
+     </NavigationContainer>
     </>
    );
 };
