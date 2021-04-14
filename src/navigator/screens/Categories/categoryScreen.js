@@ -17,14 +17,14 @@ export default function CategoryScreen(){
 
       </View>
       <View style={{flex:1, justifyContent:"center", flexDirection:"row", alignItems:"center"}}>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>POst-1</Text></View>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>POst-2</Text></View>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>POst-3</Text></View>
+        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>post-1</Text></View>
+        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>post-2</Text></View>
+        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>post-3</Text></View>
       </View>
       <View style={{flex:1, backgroundColor:"darkorange", justifyContent:"center", flexDirection:"row", alignItems:"center"}}>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>POst-1</Text></View>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>POst-2</Text></View>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>POst-3</Text></View>
+        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>post-1</Text></View>
+        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>post-2</Text></View>
+        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>post-3</Text></View>
       </View>
 
       {/* Vista categoria 2 */}
