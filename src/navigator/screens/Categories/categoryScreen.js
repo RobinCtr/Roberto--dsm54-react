@@ -1,57 +1,51 @@
-import * as React from 'react';
+import React, { Component } from 'react';
+import { ActivityIndicator, FlatList, Text, View, Image,StyleSheet } from 'react-native';
 
-import {Text, StyleSheet,View, Image} from 'react-native';
+export default class CategoryScreen extends Component{
+  constructor(props) {
+  super(props);
+    this.state = {
+    data: [],
+    isLoading: true
+    };
+  }
 
+componentDidMount() {
+  fetch('http://10.0.2.2:8000/api/categories')
+  //fetch('https://jsonplaceholder.typicode.com/posts')
+  //fetch('https://reactnative.dev/movies.json')
+  .then(console.log(this.data))
+  .then((response) => response.json())
+  .then((json) => {
+  this.setState({ data: json.categories});
+})
+  .catch((error) => console.error(error))
+  .finally(() => {
+  this.setState({ isLoading: false });
+  });
+}
+render() {
 
-export default function CategoryScreen(){
-    return (
-        <>
-         <View style={[styles.container, {
-      // Try setting `flexDirection` to `"row"`.
-      flexDirection: "column"}]}>
-      {/* VISTA CATEGORI 1 */}
-      <View style={{flex:1, justifyContent:"center", flexDirection:"row", alignItems:"center"}}>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Image style={styles.imageCategory} source={require('../../../assets/Images/C.png')}/><Text>Laravel</Text></View>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Image style={styles.imageCategory} source={require('../../../assets/Images/bitbucket-logo.png')}/></View>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Image style={styles.imageCategory} source={require('../../../assets/Images/872px-Android_robot.svg.png')}/></View>
+  const { data, isLoading } = this.state;
 
-      </View>
-      <View style={{flex:1, justifyContent:"center", flexDirection:"row", alignItems:"center"}}>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>post-1</Text></View>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>post-2</Text></View>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>post-3</Text></View>
-      </View>
-      <View style={{flex:1, backgroundColor:"darkorange", justifyContent:"center", flexDirection:"row", alignItems:"center"}}>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>post-1</Text></View>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>post-2</Text></View>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>post-3</Text></View>
-      </View>
+  return (
+    <View style={{ flex: 1, padding: 24, justifyContent: "center" }}>
+    {isLoading ? <ActivityIndicator/> : (
+      <FlatList 
+        data={data}
+        keyExtractor={({ id }, index) => id}
+        renderItem={({ item }) => (
+          <Image style={styles.imageCategory}  source={{uri:item.image }} />
 
-      {/* Vista categoria 2 */}
-      <View style={{flex:1, backgroundColor:"gray", justifyContent:"center", flexDirection:"row", alignItems:"center"}}>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>POST-4</Text></View>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>POST-5</Text></View>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>POST-6</Text></View>
-      </View>
-      <View style={{flex:1, backgroundColor:"gray", justifyContent:"center", flexDirection:"row", alignItems:"center"}}>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>POST-4</Text></View>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>POST-5</Text></View>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>POST-6</Text></View>
-      </View>
-      <View style={{flex:1, backgroundColor:"gray", justifyContent:"center", flexDirection:"row", alignItems:"center"}}>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>POST-4</Text></View>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>POST-5</Text></View>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}><Text>POST-6</Text></View>
-      </View>
-    </View>  
-        </>
-    )
-} 
-
-
-
+        )}
+      />
+    )}
+  </View>
+    );
+  }
+};
 const styles = StyleSheet.create({
-    container: {
+  container: {
     flex: 1,
     padding: 20,
     },
@@ -59,5 +53,4 @@ const styles = StyleSheet.create({
         width: 68,
         height: 68,
       },
-
-});
+    });
